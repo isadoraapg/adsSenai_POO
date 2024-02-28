@@ -53,9 +53,10 @@ public class Aula09_Exercício {
 							break;
 							default:
 								System.out.println("Opção inválida");
-				}
+							}
+				}while (opcaoEleitor != 1); //verificar 
 				
-		}while (opcaoMesario != 2);
+		}}while (opcaoMesario != 2);
 		
 		System.out.println("Programa finalizado.");
 		
@@ -64,4 +65,4 @@ public class Aula09_Exercício {
 		
 	}
 		}
-	}
+	
