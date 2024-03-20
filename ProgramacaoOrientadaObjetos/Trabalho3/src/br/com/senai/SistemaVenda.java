@@ -313,14 +313,61 @@ public class SistemaVenda {
 
 	//VENDA
 	private static void chamarMenuVenda() {
+		int opcao;
+		do {
+			opcao = Integer.valueOf(JOptionPane.showInputDialog("MENU:\n1 - Adicionar venda\n2 - Remover venda\n3  - Listar venda\n4 - Voltar\n5 - Sair"));
+			if (opcao == 1) {
+				cadastrarVenda();
+			} else if (opcao == 2) { 
+				removerVenda();
+			} else if (opcao == 3) {  
+				listarVenda();
+			} else if(opcao == 4) {
+				chamarMenu();
+			}
+			else {
+				System.out.println("Digite uma opcao valida!");
+			}
+		} while (opcao != 5);
+		System.out.println("Programa encerrado!!!");
+	}
 
 
+	private static void cadastrarVenda() {
+		if (venda1.getId() == 0) {
+			venda1.setId(Integer.valueOf(JOptionPane.showInputDialog("Digite o código da venda: ")));
+			venda1.setDataVenda(JOptionPane.showInputDialog("Digite a data da venda: "));
+			venda1.setQtd(Integer.valueOf(JOptionPane.showInputDialog("Digite a quantidade que foi vendida: ")));
+			venda1.setItensVenda(produto1);
+		} else {
+			System.out.println("O estoque está cheio, remova um produto.");
+		}
+		produto1.setQtd(produto1.getQtd() - venda1.getQtd() );
 
+	}
+
+
+	private static void removerVenda() {
+		int codigo = Integer.valueOf(JOptionPane.showInputDialog("Digite o código da venda que deseja remover: "));
+		if (venda1.getId() == codigo) {
+			venda1 = new Venda();
+		} else {
+			System.out.println("Venda não encontrada.");
+		}
+
+	}
+
+
+	private static void listarVenda() {
+		System.out.println(venda1.getId());
+		System.out.println(venda1.getQtd());
+		System.out.println(venda1.getDataVenda());
 
 
 	}
 
 
+	//modelagem, programa principal, classes produto, vendedor, venda e cliente
 
 
 
